@@ -20,11 +20,11 @@ module JwtToken
     JWT.encode(payload, key)
   end
 
-  def self.decode(token, key)
+  def self.decode(type, token)
     return nil unless token
 
     begin
-      decoded = JWT.decode(token, key)[0]
+      decoded = JWT.decode(token, ENV[TOKEN_TYPES[type][:key_env]])[0]
 
       HashWithIndifferentAccess.new(decoded)
     rescue JWT::DecodeError => e
