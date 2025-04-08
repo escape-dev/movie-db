@@ -7,6 +7,10 @@ Rails.application.routes.draw do
           post :refresh_token, on: :collection
         end
       end
+
+      resources :users, only: %i[] do
+        get :current, on: :collection
+      end
     end
   end
 end
