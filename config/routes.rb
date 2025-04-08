@@ -11,6 +11,13 @@ Rails.application.routes.draw do
       resources :users, only: %i[] do
         get :current, on: :collection
       end
+
+      resources :movies, only: %i[] do
+        get :popular, on: :collection
+        get :upcoming, on: :collection
+        get :top_rated, on: :collection
+        get :now_playing, on: :collection
+      end
     end
   end
 end
